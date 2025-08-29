@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanilla Plant Health Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Logo">
+    <h1>Vanilla Plant Health Detection</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if img_path %}
+    <div class="result">
+      <h2>Prediction: {{ prediction }}</h2>
+      <img src="{{ '/' + img_path }}" 
+     alt="Uploaded Image" style="max-width:300px; margin-top:10px; border-radius:8px;">
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
